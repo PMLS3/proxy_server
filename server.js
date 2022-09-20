@@ -13,8 +13,10 @@ require('dotenv').config()
 app.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
     let endpoint = (process.env.API_BASE_URL).replace(/\/$/, "") + req.params.endpoint
     console.log('end', req.query)
+    console.log('end req.params.endpoint', req.params.endpoint)
+
     if(req.query.my_base_url) {
-        endpoint = req.params.endpoint.slice(1)
+        endpoint = req.query.my_base_url
         delete req.query.my_base_url
     }
     console.log('end', req.query)
